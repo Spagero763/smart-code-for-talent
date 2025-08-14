@@ -1,0 +1,180 @@
+{
+	"compiler": {
+		"version": "0.8.20+commit.a1b79de6"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "causeId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "beneficiary",
+						"type": "address"
+					}
+				],
+				"name": "CauseRegistered",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "causeId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Donated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "causeCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "causes",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "address payable",
+						"name": "beneficiary",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalReceived",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "exists",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "causeId",
+						"type": "uint256"
+					}
+				],
+				"name": "donate",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "address payable",
+						"name": "beneficiary",
+						"type": "address"
+					}
+				],
+				"name": "registerCause",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"DonationTracker.sol": "DonationTracker"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"DonationTracker.sol": {
+			"keccak256": "0xc729b88dd4b50e3c4058751dd7a94d1b947eb314dc3e84c0278eae7407f2132e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://09f8f335bd893a156482432e25c949c53a92fcd823f52ddb8baf6f6b7b779b0a",
+				"dweb:/ipfs/QmVyYUFRgkW4zCioduKW68jbc3rnYCto5gVyYVMrJrDYGB"
+			]
+		}
+	},
+	"version": 1
+}

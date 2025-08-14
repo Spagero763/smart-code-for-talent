@@ -1,0 +1,265 @@
+{
+	"compiler": {
+		"version": "0.8.20+commit.a1b79de6"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					}
+				],
+				"name": "PollClosed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "question",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string[]",
+						"name": "options",
+						"type": "string[]"
+					}
+				],
+				"name": "PollCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "voter",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "optionIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "Voted",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					}
+				],
+				"name": "close",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "question",
+						"type": "string"
+					},
+					{
+						"internalType": "string[]",
+						"name": "options",
+						"type": "string[]"
+					}
+				],
+				"name": "createPoll",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					}
+				],
+				"name": "getPoll",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "question",
+						"type": "string"
+					},
+					{
+						"internalType": "string[]",
+						"name": "options",
+						"type": "string[]"
+					},
+					{
+						"internalType": "bool",
+						"name": "open",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "optionIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getVotes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "hasVoted",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pollCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "optionIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "vote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"PollCreator.sol": "PollCreator"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"PollCreator.sol": {
+			"keccak256": "0x20863b79f599890467c239aa63442e70649a44b6103db8d59875e8eba2e3e45f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d2aaa7e73dd4e18a619788d3e7a61380d9a45caa41bde1e1aab0f5cfa438b821",
+				"dweb:/ipfs/QmYKugUqADQkmp5fpSpfEGskrRJezvJnJ9v7PHKXeLcrzP"
+			]
+		}
+	},
+	"version": 1
+}
