@@ -52,4 +52,10 @@ contract WalletInteraction {
         paused = _paused;
         emit Paused(_paused);
     }
+
+    function setCooldown(uint256 _seconds) external onlyOwner {
+        require(_seconds <= 1 days, "cooldown too long");
+        cooldownTime = _seconds;
+        emit CooldownUpdated(_seconds);
+    }
 }
