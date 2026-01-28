@@ -8,8 +8,9 @@ contract WalletInteraction {
     address public owner;
     bool public paused;
     mapping(address => uint256) public interactions;
+    mapping(address => uint256) public lastInteraction;
 
-    event Interacted(address indexed user, uint256 count);
+    event Interacted(address indexed user, uint256 count, uint256 timestamp);
     event Paused(bool status);
 
     modifier onlyOwner() {
@@ -30,7 +31,8 @@ contract WalletInteraction {
         unchecked {
             interactions[msg.sender]++;
         }
-        emit Interacted(msg.sender, interactions[msg.sender]);
+        lastInteraction[msg.sender] = block.timestamp;
+        emit Interacted(msg.sender, interactions[msg.sender], block.timestamp);
     }
 
     function getMyCount() external view returns (uint256) {
