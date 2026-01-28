@@ -7,6 +7,7 @@ pragma solidity ^0.8.20;
 contract WalletInteraction {
     address public owner;
     bool public paused;
+    uint256 public totalInteractions;
     mapping(address => uint256) public interactions;
     mapping(address => uint256) public lastInteraction;
 
@@ -31,6 +32,7 @@ contract WalletInteraction {
         uint256 newCount;
         unchecked {
             newCount = ++interactions[msg.sender];
+            totalInteractions++;
         }
         lastInteraction[msg.sender] = block.timestamp;
         emit Interacted(msg.sender, newCount, block.timestamp);
