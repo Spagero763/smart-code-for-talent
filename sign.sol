@@ -15,6 +15,7 @@ contract WalletInteraction {
     event Interacted(address indexed user, uint256 count, uint256 timestamp);
     event Paused(bool status);
     event CooldownUpdated(uint256 newCooldown);
+    event OwnershipTransferred(address indexed prev, address indexed newOwner);
 
     modifier onlyOwner() {
         require(msg.sender == owner, "not owner");
@@ -57,5 +58,11 @@ contract WalletInteraction {
         require(_seconds <= 1 days, "cooldown too long");
         cooldownTime = _seconds;
         emit CooldownUpdated(_seconds);
+    }
+
+    function transferOwnership(address newOwner) external onlyOwner {
+        require(newOwner != address(0), "zero address");
+        emit OwnershipTransferred(owner, newOwner);
+        owner = newOwner;
     }
 }
