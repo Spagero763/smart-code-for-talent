@@ -28,11 +28,12 @@ contract WalletInteraction {
     }
 
     function interact() external whenNotPaused {
+        uint256 newCount;
         unchecked {
-            interactions[msg.sender]++;
+            newCount = ++interactions[msg.sender];
         }
         lastInteraction[msg.sender] = block.timestamp;
-        emit Interacted(msg.sender, interactions[msg.sender], block.timestamp);
+        emit Interacted(msg.sender, newCount, block.timestamp);
     }
 
     function getMyCount() external view returns (uint256) {
