@@ -8,11 +8,13 @@ contract WalletInteraction {
     address public owner;
     bool public paused;
     uint256 public totalInteractions;
+    uint256 public cooldownTime = 60; // 1 minute default
     mapping(address => uint256) public interactions;
     mapping(address => uint256) public lastInteraction;
 
     event Interacted(address indexed user, uint256 count, uint256 timestamp);
     event Paused(bool status);
+    event CooldownUpdated(uint256 newCooldown);
 
     modifier onlyOwner() {
         require(msg.sender == owner, "not owner");
@@ -29,6 +31,10 @@ contract WalletInteraction {
     }
 
     function interact() external whenNotPaused {
+        require(
+            block.timestamp >= lastInteraction[msg.sender] + cooldownTime,
+            "cooldown active"
+        );
         uint256 newCount;
         unchecked {
             newCount = ++interactions[msg.sender];
