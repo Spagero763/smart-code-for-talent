@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
+/// @title WalletInteraction
+/// @notice Simple contract to track user interactions
+/// @dev Uses unchecked math for gas optimization
 contract WalletInteraction {
     mapping(address => uint256) public interactions;
 
