@@ -49,6 +49,12 @@ contract WalletInteraction {
         return interactions[msg.sender];
     }
 
+    function getRemainingCooldown(address user) external view returns (uint256) {
+        uint256 nextAllowed = lastInteraction[user] + cooldownTime;
+        if (block.timestamp >= nextAllowed) return 0;
+        return nextAllowed - block.timestamp;
+    }
+
     function setPaused(bool _paused) external onlyOwner {
         paused = _paused;
         emit Paused(_paused);
