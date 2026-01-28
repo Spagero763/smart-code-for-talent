@@ -5,9 +5,19 @@ pragma solidity ^0.8.20;
 /// @notice Simple contract to track user interactions
 /// @dev Uses unchecked math for gas optimization
 contract WalletInteraction {
+    address public owner;
     mapping(address => uint256) public interactions;
 
     event Interacted(address indexed user, uint256 count);
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "not owner");
+        _;
+    }
+
+    constructor() {
+        owner = msg.sender;
+    }
 
     function interact() external {
         unchecked {
